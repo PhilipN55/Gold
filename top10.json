@@ -1,1 +1,52 @@
-[]
+[
+  {
+    "name": "Glock-18",
+    "rarity": "Covert",
+    "float": 0.45
+  },
+  {
+    "name": "M4A1-S",
+    "rarity": "Covert",
+    "float": 0.749
+  },
+  {
+    "name": "Karambit",
+    "rarity": "Covert",
+    "float": 0.825
+  },
+  {
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Classified",
+    "float": 0.071
+  },
+  {
+    "name": "USP-S",
+    "rarity": "Classified",
+    "float": 0.278
+  },
+  {
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Classified",
+    "float": 0.478
+  },
+  {
+    "name": "AWP | Dragon Lore",
+    "rarity": "Classified",
+    "float": 0.707
+  },
+  {
+    "name": "USP-S",
+    "rarity": "Classified",
+    "float": 0.797
+  },
+  {
+    "name": "USP-S",
+    "rarity": "Restricted",
+    "float": 0.289
+  },
+  {
+    "name": "M4A1-S",
+    "rarity": "Restricted",
+    "float": 0.536
+  }
+]

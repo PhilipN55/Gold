@@ -1,18 +1,36 @@
 import pygame
 import random
+import json
+
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
-pygame.display.set_caption("Gold Gold GOld")
+pygame.display.set_caption("Gold Gold Gold")
 font = pygame.font.SysFont(None, 36)
 running = True
 
 Rarity = {
-    "Consumer": (180, 180, 180),     # gray
-    "Industrial": (120, 200, 255),   # light blue
-    "Mil-Spec": (0, 120, 255),       # blue
-    "Restricted": (170, 0, 255),     # purple
-    "Classified": (255, 0, 200),     # pinkish
-    "Covert": (255, 0, 0)            # red
+    "Consumer": (180, 180, 180),
+    "Industrial": (120, 200, 255),
+    "Mil-Spec": (0, 120, 255),
+    "Restricted": (170, 0, 255),
+    "Classified": (255, 0, 200),
+    "Covert": (255, 0, 0),
+}
+RarityChans = {
+    "Consumer": 40,
+    "Industrial": 30,
+    "Mil-Spec": 10,
+    "Restricted": 5,
+    "Classified": 3,
+    "Covert": 2
+}
+rarity_rank = {
+    "Consumer": 1,
+    "Industrial": 2,
+    "Mil-Spec": 3,
+    "Restricted": 4,
+    "Classified": 5,
+    "Covert": 6
 }
 
 weapons = [
@@ -28,10 +46,20 @@ weapons = [
     "AWP | Dragon Lore"
 ]
 
+drops = []
+sorted_drops = []
+
+top10 = ""
 weapon = ""
 rarity = ""
 floatV = 0
+text_color = (255, 255, 255)
 
+
+with open("top10.json", "r") as f:
+    drops = json.load(f)
+
+print(sorted_drops)
 while running:
     screen.fill((0, 0, 0))
     for event in pygame.event.get():
@@ -42,15 +70,26 @@ while running:
             if event.key == pygame.K_SPACE:
                 floatV = round(random.uniform(0.00, 1.00), 3)
                 weapon = random.choice(weapons)
-                rarity = random.choice(list(Rarity.keys()))
+                rarities = list(RarityChans.keys())
+                chans = list(RarityChans.values())
+                rarity = random.choices(rarities, weights=chans, k=1)[0]
+                text_color = Rarity[rarity]
+                drops.append({
+                    "name": weapon,
+                    "rarity": rarity,
+                    "float": floatV
+                })
+                sorted_drops = sorted(drops,key=lambda x: (-rarity_rank[x["rarity"]], x["float"]))
+                top10 = sorted_drops[:10]
+                with open("top10.json", "w") as f: json.dump(top10, f, indent=2)
 
-    text_color = Rarity .get(rarity, (255, 255, 255))
-    text = font.render(
-        f"{weapon}: float {floatV}",
-        True,
-            text_color
-    )
-    screen.blit(text, (40, 120))
+    text = font.render(f"{weapon}: float {floatV}",True,text_color)
+    text_rect = text.get_rect(center=(400, 120))
+    screen.blit(text, text_rect)
+
+    leaderboard_text = font.render(f"{top10[0]}",True,(255,255,255))
+    screen.blit(leaderboard_text,(400,300))
+
 
     pygame.display.update()
 pygame.quit()
