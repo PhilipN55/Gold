@@ -49,13 +49,15 @@ weapons = [
 drops = []
 sorted_drops = []
 
-top10 = ""
+top10 = []
 weapon = ""
 rarity = ""
 floatV = 0
 text_color = (255, 255, 255)
 
 
+with open("top10.json", "r") as f:
+    top10 = json.load(f)
 with open("top10.json", "r") as f:
     drops = json.load(f)
 
@@ -87,8 +89,20 @@ while running:
     text_rect = text.get_rect(center=(400, 120))
     screen.blit(text, text_rect)
 
-    leaderboard_text = font.render(f"{top10[0]}",True,(255,255,255))
-    screen.blit(leaderboard_text,(400,300))
+
+    y  = 200
+    for i, item in enumerate(top10):
+        x = 150
+        leaderboard_name = font.render(f"{1+i}.{item["name"]}",True,(255,255,255))
+        leaderboard_rarity = font.render(f"{item["rarity"]}", True,Rarity[item["rarity"]])
+        leaderboard_float = font.render(f"{item["float"]}", True,(255, 255, 255))
+
+        screen.blit(leaderboard_name,(150,y))
+        x += leaderboard_name.get_width()
+        screen.blit(leaderboard_rarity,(x+10,y))
+
+        screen.blit(leaderboard_float,(600,y))
+        y += 30
 
 
     pygame.display.update()

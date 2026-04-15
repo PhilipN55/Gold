@@ -1,52 +1,52 @@
 [
   {
-    "name": "Glock-18",
+    "name": "Karambit",
     "rarity": "Covert",
-    "float": 0.45
+    "float": 0.06
   },
   {
-    "name": "M4A1-S",
+    "name": "AWP | Dragon Lore",
     "rarity": "Covert",
-    "float": 0.749
+    "float": 0.08
+  },
+  {
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Covert",
+    "float": 0.088
   },
   {
     "name": "Karambit",
     "rarity": "Covert",
-    "float": 0.825
-  },
-  {
-    "name": "AK-47 | Fire Serpent",
-    "rarity": "Classified",
-    "float": 0.071
-  },
-  {
-    "name": "USP-S",
-    "rarity": "Classified",
-    "float": 0.278
-  },
-  {
-    "name": "AK-47 | Fire Serpent",
-    "rarity": "Classified",
-    "float": 0.478
+    "float": 0.11
   },
   {
     "name": "AWP | Dragon Lore",
-    "rarity": "Classified",
-    "float": 0.707
+    "rarity": "Covert",
+    "float": 0.127
   },
   {
-    "name": "USP-S",
-    "rarity": "Classified",
-    "float": 0.797
-  },
-  {
-    "name": "USP-S",
-    "rarity": "Restricted",
-    "float": 0.289
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Covert",
+    "float": 0.142
   },
   {
     "name": "M4A1-S",
-    "rarity": "Restricted",
-    "float": 0.536
+    "rarity": "Covert",
+    "float": 0.163
+  },
+  {
+    "name": "USP-S",
+    "rarity": "Covert",
+    "float": 0.187
+  },
+  {
+    "name": "Butterfly Knife",
+    "rarity": "Covert",
+    "float": 0.204
+  },
+  {
+    "name": "USP-S",
+    "rarity": "Covert",
+    "float": 0.217
   }
 ]
