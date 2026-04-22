@@ -15,14 +15,16 @@ Rarity = {
     "Restricted": (170, 0, 255),
     "Classified": (255, 0, 200),
     "Covert": (255, 0, 0),
+    "Gold": (255,255,0)
 }
 RarityChans = {
-    "Consumer": 40,
+    "Consumer": 39.75,
     "Industrial": 30,
     "Mil-Spec": 10,
     "Restricted": 5,
     "Classified": 3,
-    "Covert": 2
+    "Covert": 2,
+    "Gold": 0.25,
 }
 rarity_rank = {
     "Consumer": 1,
@@ -55,7 +57,7 @@ rarity = ""
 floatV = 0
 text_color = (255, 255, 255)
 
-
+#"r" = read
 with open("top10.json", "r") as f:
     top10 = json.load(f)
 with open("top10.json", "r") as f:
@@ -74,6 +76,10 @@ while running:
                 weapon = random.choice(weapons)
                 rarities = list(RarityChans.keys())
                 chans = list(RarityChans.values())
+                #weights bestämmer hur stor chans varje element har med hjälp av dict
+                #k hur många värden den tar, [0] vilket värde den tar.
+                #choices() kan man sätta vikter/chanser på inte choice()
+                #[0] konverterar ["rarity"] till "rarity"
                 rarity = random.choices(rarities, weights=chans, k=1)[0]
                 text_color = Rarity[rarity]
                 drops.append({
@@ -81,8 +87,17 @@ while running:
                     "rarity": rarity,
                     "float": floatV
                 })
+                #key är hur det sorteras
+                #lambda x är anonym funktion utan namn
+                #-rarity_rank gör att det blir rätt ordning högst-lägst
+                #tuple är en lista som inte kan ändras
+                #om rarity e samma sortera då på float
                 sorted_drops = sorted(drops,key=lambda x: (-rarity_rank[x["rarity"]], x["float"]))
                 top10 = sorted_drops[:10]
+                #with ser till att filen stängs korrekt
+                #"w" = write (skrivläge)
+                #indent = mer luftigt i json filen
+                #.json.dump konverterar kod till dict i json och sparar det
                 with open("top10.json", "w") as f: json.dump(top10, f, indent=2)
 
     text = font.render(f"{weapon}: float {floatV}",True,text_color)
