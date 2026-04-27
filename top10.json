@@ -1,52 +1,62 @@
 [
   {
-    "name": "Butterfly Knife",
-    "rarity": "Covert",
-    "float": 0.006
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Gold",
+    "float": 0.266,
+    "worth": 24680
   },
   {
-    "name": "Glock-18",
-    "rarity": "Covert",
-    "float": 0.45
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Gold",
+    "float": 0.424,
+    "worth": 21520
   },
   {
-    "name": "Glock-18",
+    "name": "AWP",
+    "rarity": "Gold",
+    "float": 0.856,
+    "worth": 12880
+  },
+  {
+    "name": "Desert Eagle",
     "rarity": "Covert",
-    "float": 0.693
+    "float": 0.003,
+    "worth": 5988
+  },
+  {
+    "name": "Desert Eagle",
+    "rarity": "Covert",
+    "float": 0.007,
+    "worth": 5971
   },
   {
     "name": "AWP",
     "rarity": "Covert",
-    "float": 0.82
+    "float": 0.094,
+    "worth": 5624
   },
   {
-    "name": "AWP | Dragon Lore",
-    "rarity": "Classified",
-    "float": 0.135
+    "name": "AK-47",
+    "rarity": "Covert",
+    "float": 0.306,
+    "worth": 4776
   },
   {
-    "name": "Butterfly Knife",
-    "rarity": "Classified",
-    "float": 0.155
-  },
-  {
-    "name": "Karambit",
-    "rarity": "Classified",
-    "float": 0.391
-  },
-  {
-    "name": "USP-S",
-    "rarity": "Classified",
-    "float": 0.595
-  },
-  {
-    "name": "Glock-18",
-    "rarity": "Classified",
-    "float": 0.776
+    "name": "Desert Eagle",
+    "rarity": "Covert",
+    "float": 0.373,
+    "worth": 4508
   },
   {
     "name": "Butterfly Knife",
-    "rarity": "Classified",
-    "float": 0.942
+    "rarity": "Covert",
+    "float": 0.386,
+    "worth": 4455
+  },
+  {
+    "name": "AWP",
+    "rarity": "Covert",
+    "float": 0.4,
+    "worth": 4400
   }
 ]
