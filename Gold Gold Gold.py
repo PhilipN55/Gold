@@ -57,7 +57,7 @@ weapons = [
     "AK-47 | Fire Serpent",
     "AWP | Dragon Lore"
 ]
-
+max_inventory = 20
 drops = []
 sorted_drops = []
 scroll_y = 0
@@ -128,12 +128,17 @@ while running:
                 #indent = mer luftigt i json filen
                 #.json.dump konverterar kod till dict i json och sparar det
                 with open("top10.json", "w") as f: json.dump(top10, f, indent=2)
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_i:
-                if inventory == False:
-                    inventory = True
-                else:
-                    inventory = False
+
+    if len(loot) >= max_inventory:
+        full_text = font.render("Inventory full!", True, (255, 255, 255))
+        screen.blit(full_text, (300, 400))
+
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_i:
+            if inventory == False:
+                inventory = True
+            else:
+                inventory = False
 
     if inventory == False:
         text = font.render(f"{weapon}: float {floatV}",True,text_color)
@@ -161,6 +166,12 @@ while running:
                 x = 50 + kolumn * 160
                 y = 100 + rad * 120
                 pygame.draw.rect(screen, RectColor, pygame.Rect(x-40, y, 140, 100), border_radius=15)
+
+                name_text = font.render(item["name"], True, Rarity[item["rarity"]])
+                value_text = font.render(f'{item["worth"]}kr', True, (255, 255, 255))
+
+                screen.blit(name_text, (x - 35, y + 10))
+                screen.blit(value_text, (x - 35, y + 50))
     # ---------------------------------------------------------------------------------------------------#
 
 

@@ -12,6 +12,12 @@
     "worth": 21520
   },
   {
+    "name": "Butterfly Knife",
+    "rarity": "Gold",
+    "float": 0.484,
+    "worth": 20320
+  },
+  {
     "name": "AWP",
     "rarity": "Gold",
     "float": 0.856,
@@ -36,27 +42,21 @@
     "worth": 5624
   },
   {
+    "name": "AWP | Dragon Lore",
+    "rarity": "Covert",
+    "float": 0.202,
+    "worth": 5192
+  },
+  {
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Covert",
+    "float": 0.262,
+    "worth": 4952
+  },
+  {
     "name": "AK-47",
     "rarity": "Covert",
     "float": 0.306,
     "worth": 4776
-  },
-  {
-    "name": "Desert Eagle",
-    "rarity": "Covert",
-    "float": 0.373,
-    "worth": 4508
-  },
-  {
-    "name": "Butterfly Knife",
-    "rarity": "Covert",
-    "float": 0.386,
-    "worth": 4455
-  },
-  {
-    "name": "AWP",
-    "rarity": "Covert",
-    "float": 0.4,
-    "worth": 4400
   }
 ]
