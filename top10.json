@@ -1,62 +1,62 @@
 [
   {
-    "name": "AK-47 | Fire Serpent",
+    "name": "M4A1-S",
     "rarity": "Gold",
-    "float": 0.266,
-    "worth": 24680
-  },
-  {
-    "name": "AK-47 | Fire Serpent",
-    "rarity": "Gold",
-    "float": 0.424,
-    "worth": 21520
-  },
-  {
-    "name": "Butterfly Knife",
-    "rarity": "Gold",
-    "float": 0.484,
-    "worth": 20320
-  },
-  {
-    "name": "AWP",
-    "rarity": "Gold",
-    "float": 0.856,
-    "worth": 12880
-  },
-  {
-    "name": "Desert Eagle",
-    "rarity": "Covert",
-    "float": 0.003,
-    "worth": 5988
-  },
-  {
-    "name": "Desert Eagle",
-    "rarity": "Covert",
-    "float": 0.007,
-    "worth": 5971
-  },
-  {
-    "name": "AWP",
-    "rarity": "Covert",
-    "float": 0.094,
-    "worth": 5624
-  },
-  {
-    "name": "AWP | Dragon Lore",
-    "rarity": "Covert",
-    "float": 0.202,
-    "worth": 5192
+    "float": 0.008,
+    "worth": 29840
   },
   {
     "name": "AK-47 | Fire Serpent",
     "rarity": "Covert",
-    "float": 0.262,
-    "worth": 4952
+    "float": 0.679,
+    "worth": 3284
+  },
+  {
+    "name": "USP-S",
+    "rarity": "Classified",
+    "float": 0.052,
+    "worth": 2316
+  },
+  {
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Classified",
+    "float": 0.132,
+    "worth": 2188
   },
   {
     "name": "AK-47",
-    "rarity": "Covert",
-    "float": 0.306,
-    "worth": 4776
+    "rarity": "Classified",
+    "float": 0.345,
+    "worth": 1848
+  },
+  {
+    "name": "Desert Eagle",
+    "rarity": "Restricted",
+    "float": 0.599,
+    "worth": 540
+  },
+  {
+    "name": "AK-47",
+    "rarity": "Restricted",
+    "float": 0.879,
+    "worth": 372
+  },
+  {
+    "name": "AK-47",
+    "rarity": "Mil-Spec",
+    "float": 0.043,
+    "worth": 291
+  },
+  {
+    "name": "AK-47 | Fire Serpent",
+    "rarity": "Mil-Spec",
+    "float": 0.152,
+    "worth": 269
+  },
+  {
+    "name": "Desert Eagle",
+    "rarity": "Mil-Spec",
+    "float": 0.473,
+    "worth": 205
   }
 ]

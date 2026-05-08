@@ -66,9 +66,12 @@ weapon = ""
 rarity = ""
 worth = ""
 inventory = False
+inventory_full = False
 loot = []
 floatV = 0
 text_color = (255, 255, 255)
+money = 0
+submitted_items = []
 #inventory
 #Rect = pygame.Rect(50, 100, 140, 100)
 RectColor = (25, 25, 25)
@@ -82,6 +85,12 @@ with open("top10.json", "r") as f:
 print(sorted_drops)
 text1 = font.render("inventory = I", True,(255, 255, 255))
 
+#test
+
+
+
+#test#
+
 while running:
     screen.fill((0, 0, 0))
     screen.blit(text1, (620, 40))
@@ -90,55 +99,85 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                floatV = round(random.uniform(0.00, 1.00), 3)
-                weapon = random.choice(weapons)
-                rarities = list(RarityChans.keys())
-                chans = list(RarityChans.values())
-                #weights bestämmer hur stor chans varje element har med hjälp av dict
-                #k hur många värden den tar, [0] vilket värde den tar.
-                #choices() kan man sätta vikter/chanser på inte choice()
-                #[0] konverterar ["rarity"] till "rarity"
-                rarity = random.choices(rarities, weights=chans, k=1)[0]
-                #värde kalkylator, int = avrunda
-                value = int(RarityValue[rarity] * (1 + (1 - floatV) * 2))
-                text_color = Rarity[rarity]
-                drops.append({
-                    "name": weapon,
-                    "rarity": rarity,
-                    "float": floatV,
-                    "worth": value
-                })
-                loot.append({
-                    "name": weapon,
-                    "rarity": rarity,
-                    "float": floatV,
-                    "worth": value
-                })
-                #key är hur det sorteras
-                #lambda x är anonym funktion utan namn
-                #-rarity_rank gör att det blir rätt ordning högst-lägst
-                #tuple är en lista som inte kan ändras
-                #om rarity e samma sortera då på float
-                drops_to_sort = (drops+top10)
-                sorted_drops = sorted(drops_to_sort,key=lambda x: (-rarity_rank[x["rarity"]], x["float"]))
-                top10 = sorted_drops[:10]
-                drops = []
-                #with ser till att filen stängs korrekt
-                #"w" = write (skrivläge)
-                #indent = mer luftigt i json filen
-                #.json.dump konverterar kod till dict i json och sparar det
-                with open("top10.json", "w") as f: json.dump(top10, f, indent=2)
+                if inventory_full == False:
+                    floatV = round(random.uniform(0.00, 1.00), 3)
+                    weapon = random.choice(weapons)
+                    rarities = list(RarityChans.keys())
+                    chans = list(RarityChans.values())
+                    #weights bestämmer hur stor chans varje element har med hjälp av dict
+                    #k hur många värden den tar, [0] vilket värde den tar.
+                    #choices() kan man sätta vikter/chanser på inte choice()
+                    #[0] konverterar ["rarity"] till "rarity"
+                    rarity = random.choices(rarities, weights=chans, k=1)[0]
+                    #värde kalkylator, int = avrunda
+                    value = int(RarityValue[rarity] * (1 + (1 - floatV) * 2))
+                    text_color = Rarity[rarity]
+                    drops.append({
+                        "name": weapon,
+                        "rarity": rarity,
+                        "float": floatV,
+                        "worth": value
+                    })
+                    loot.append({
+                        "name": weapon,
+                        "rarity": rarity,
+                        "float": floatV,
+                        "worth": value
+                    })
+                    #key är hur det sorteras
+                    #lambda x är anonym funktion utan namn
+                    #-rarity_rank gör att det blir rätt ordning högst-lägst
+                    #tuple är en lista som inte kan ändras
+                    #om rarity e samma sortera då på float
+                    drops_to_sort = (submitted_items+top10)
+                    sorted_drops = sorted(drops_to_sort,key=lambda x: x["worth"], reverse=True)
+                    submitted_items = []
+                    top10 = sorted_drops[:10]
+                    drops = []
+                    #with ser till att filen stängs korrekt
+                    #"w" = write (skrivläge)
+                    #indent = mer luftigt i json filen
+                    #.json.dump konverterar kod till dict i json och sparar det
+                    with open("top10.json", "w") as f: json.dump(top10, f, indent=2)
 
-    if len(loot) >= max_inventory:
-        full_text = font.render("Inventory full!", True, (255, 255, 255))
-        screen.blit(full_text, (300, 400))
 
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_i:
-            if inventory == False:
-                inventory = True
-            else:
-                inventory = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_i:
+                if inventory == False:
+                    inventory = True
+                else:
+                    inventory = False
+        # sälja inventory
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if inventory:
+                mouse_pos = pygame.mouse.get_pos()
+                #item = stjälva item vid index (0,1,2
+                for i, item in enumerate(loot):
+                    rutor = 5
+                    kolumn = i % rutor
+                    rad = i // rutor
+
+                    x = 50 + kolumn * 160
+                    y = 100 + rad * 120
+                    #hitbox
+                    rect = pygame.Rect(x - 40, y, 140, 100)
+
+                    if rect.collidepoint(mouse_pos):
+
+                        # vänsterklick = sälj
+                        if event.button == 1:
+                            money += item["worth"]
+                            loot.pop(i)
+                        # högerklick = submit
+                        elif event.button == 3:
+                            submitted_items.append(item)
+                            print("Submitted:", item)
+                            loot.pop(i)
+                        break
+
+    money_text = font.render(f"Money: {money}kr", True, (255, 255, 255))
+    screen.blit(money_text, (20, 20))
+
 
     if inventory == False:
         text = font.render(f"{weapon}: float {floatV}",True,text_color)
@@ -156,6 +195,15 @@ while running:
             screen.blit(leaderboard_float,(600,y))
             y += 30
     # inventory
+    if len(loot) >= max_inventory:
+        inventory_full = True
+    else:
+        inventory_full = False
+
+    if inventory_full:
+        full_text = font.render("Inventory full!", True, (255, 255, 255))
+        screen.blit(full_text, (300, 50))
+
     if inventory == True:
         for i, item in enumerate(loot):
             if i < 20:
@@ -172,6 +220,7 @@ while running:
 
                 screen.blit(name_text, (x - 35, y + 10))
                 screen.blit(value_text, (x - 35, y + 50))
+
     # ---------------------------------------------------------------------------------------------------#
 
 
