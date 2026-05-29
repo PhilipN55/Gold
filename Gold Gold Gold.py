@@ -54,8 +54,8 @@ weapons = [
     "USP-S",
     "Karambit",
     "Butterfly Knife",
-    "AK-47 | Fire Serpent",
-    "AWP | Dragon Lore"
+    "Aug",
+    "P-90"
 ]
 max_inventory = 20
 drops = []
@@ -171,7 +171,6 @@ while running:
                         # högerklick = submit
                         elif event.button == 3:
                             submitted_items.append(item)
-                            print("Submitted:", item)
                             loot.pop(i)
                         break
 
@@ -220,7 +219,10 @@ while running:
 
                 screen.blit(name_text, (x - 35, y + 10))
                 screen.blit(value_text, (x - 35, y + 50))
-
+                right_text = font.render("Right click to submit",True,(255,255,255))
+                screen.blit(right_text,(500,570))
+                right_text = font.render("Left click to sell", True, (255, 255, 255))
+                screen.blit(right_text, (50, 570))
     # ---------------------------------------------------------------------------------------------------#
 
 
